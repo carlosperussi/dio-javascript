@@ -1,0 +1,31 @@
+/* 
+Elabore um algoritmo que calcule o que deve ser pago por um produto, considerando o preço normal de etiqueta e a escolha da condição de pagamento.
+Utilize os códigos da tabela a seguir para ler qual a condição de pagamento escolhida e efetuar o cálculo adequado.
+
+Código condição de pagamento:
+1 - À vista Débito, recebe 10% de desconto;
+2 - À vista no Dinheiro ou PIX, recebe 15% de desconto;
+3 - Em até 2x no cartão, preço normal de etiqueta sem juros;
+4 - Acima de 2x no cartão, preço normal de etiqueta mais juros de 10%;
+*/
+
+function calculateDiscount(precoEtiqueta, condicaoPagamento) {
+    let precoFinal;
+    if(condicaoPagamento === 1)
+        precoFinal = precoEtiqueta - (precoEtiqueta * 0.1);
+    else if(condicaoPagamento === 2)
+        precoFinal = precoEtiqueta - (precoEtiqueta * 0.15);
+    else if(condicaoPagamento === 3)
+        precoFinal = precoEtiqueta;
+    else if(condicaoPagamento === 4)
+        precoFinal = precoEtiqueta + (precoEtiqueta * 0.1);
+
+    return precoFinal;
+}
+
+(function() {
+    const precoEtiqueta = 100.00;
+    let condicaoPagamento = 4;
+
+    console.log("O preço final do produto é: R$ " + calculateDiscount(precoEtiqueta, condicaoPagamento).toFixed(2));
+})();
